@@ -1,0 +1,14 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load censor %}
+<!-- Название у нас будет Product -->
+{% block title %}
+one news
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+<h1>{{ post.title|censor_profanities }}</h1>
+<h2>{{ time_now|date:'D m Y' }}</h2>
+<h3>{{ post.text|censor_profanities }}</h3>
+{% endblock content %}
